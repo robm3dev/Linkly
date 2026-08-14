@@ -47,6 +47,8 @@ namespace Linkly
             this.LinksListView.SmallImageList = listViewImages;
         }
 
+        #region Button Click Events
+
         /// <summary>
         /// The Form Load Method for the LinkSettingsForm.
         /// </summary>
@@ -161,14 +163,14 @@ namespace Linkly
                             {
                                 // Prompt the user for the name of the new Header Menu Item Type
                                 var inputDialog = new InputDialog("Re-Enter the Header Item Text",
-                                                                  "Please re-enter a new name for the new Header Menu Item:");
+                                                                  $"Please enter a new name for the '{config.Name}' Header Menu Item:");
 
                                 if (inputDialog.ShowDialog() == DialogResult.OK)
                                 {
                                     // Update the Selected Header Name
-
+                                    config.Name = inputDialog.OutputTextValue;
+                                    itemToEdit.SubItems[1].Text = config.Name;
                                     itemToEdit.Tag = config;
-                                    itemToEdit.SubItems[1].Text = inputDialog.OutputTextValue;
                                     this.HasChanges = true;
                                 }
 
@@ -237,8 +239,8 @@ namespace Linkly
                     var selectedItem = this.LinksListView.SelectedItems[0];
 
                     // Remove the selected item
-                    this.LinksListView.SelectedItems[0].Remove();  
-                    
+                    this.LinksListView.SelectedItems[0].Remove();
+
                     // Re-Insert the removed item at the 1 minus the previous index.
                     this.LinksListView.Items.Insert(index - 1, selectedItem);
                     this.HasChanges = true;
@@ -272,6 +274,8 @@ namespace Linkly
                 }
             }
         }
+
+        #endregion
 
         #region New Button ConextMenuStrip Item Click Events
 
@@ -335,6 +339,20 @@ namespace Linkly
 
             AddNewListViewItem(config);
             this.HasChanges = true;
+        }
+
+        #endregion
+
+        #region ListView Grid Form Control Events
+
+        /// <summary>
+        /// The LinksListView Double Click Event Method
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void LinksListView_DoubleClick(object sender, EventArgs e)
+        {
+            this.EditButton_Click(this.EditButton, new EventArgs());
         }
 
         #endregion

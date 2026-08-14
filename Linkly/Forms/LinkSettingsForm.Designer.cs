@@ -61,6 +61,7 @@
             LinksListView.TabIndex = 0;
             LinksListView.UseCompatibleStateImageBehavior = false;
             LinksListView.View = View.Details;
+            LinksListView.DoubleClick += LinksListView_DoubleClick;
             // 
             // HyperlinkConfigGroupBox
             // 
