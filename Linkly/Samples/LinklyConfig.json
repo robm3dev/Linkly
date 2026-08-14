@@ -1,0 +1,130 @@
+[
+  {
+    "menuItemType": "Header",
+    "name": "Education",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Microsoft Learn – C#",
+    "imageFileName": "MS.Icon.png",
+    "linkOptions": {
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "Software Testing",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "name": "Practice Software Testing Dot Com",
+    "imageFileName": "linkly_icon_512x512.png",
+    "linkOptions": {
+      "url": "https://practicesoftwaretesting.com/",
+      "browser": "Chrome",
+      "isIncognito": true,
+      "isNewWindow": true,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "name": "Practice Software Testing - Product ID Look-Up",
+    "imageFileName": "linkly_icon_512x512.png",
+    "linkOptions": {
+      "url": "https://practicesoftwaretesting.com/product/{0}",
+      "browser": "Chrome",
+      "isIncognito": true,
+      "isNewWindow": true,
+      "paramReplacementsDic": {
+        "{0}": "Product ID" // Example Value --> 01KZ9VM9VRFJYTVR2ZR5FQYQSF
+      }
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "AI Tools",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "name": "MS Co-Pilot",
+    "imageFileName": "copilot-color.png",
+    "linkOptions": {
+      "url": "https://copilot.microsoft.com/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "name": "Chat GPT",
+    "imageFileName": "ChatGPT.Icon.1024x1024.png",
+    "linkOptions": {
+      "url": "https://chatgpt.com/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "name": "Google Gemini",
+    "imageFileName": "gemini_sparkle_aurora.png",
+    "linkOptions": {
+      "url": "https://gemini.google.com/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "name": "Claude AI",
+    "imageFileName": "ClaudeIcon-Rounded.png",
+    "linkOptions": {
+      "url": "https://claude.ai/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  }
+]
