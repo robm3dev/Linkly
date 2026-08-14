@@ -1,11 +1,11 @@
 # Linkly
 
-Linkly is a lightweight Windows system tray utility that puts a fully customizable menu of hyperlinks right at your fingertips. Configure any number of links, organize them into sections, and launch them in the browser of your choice — all without cluttering your desktop or browser bookmarks bar.
+Linkly is a lightweight Windows system tray utility that puts a fully customizable context menu of hyperlinks right at your fingertips. Configure any number of links, organize them into sections, and launch them in the browser of your choice — all without cluttering your desktop or browser bookmarks bar.
 
 ## Features
 
-- **System tray access** — Linkly lives quietly in your Windows system tray and opens a right-click context menu of your configured links.
-- **Fully customizable menu** — Add, edit, reorder, and delete links, headers, and separators to organize your menu exactly how you want it.
+- **System tray access** — Linkly lives quietly in your Windows system tray and opens a (right-click) context menu of your configured links.
+- **Fully customizable menu** — Add, edit, reorder, and delete links, headers, and separators to organize and display your menu exactly how you want it.
 - **Per-link browser control** — Choose which browser (Chrome, Edge, etc.) each link opens in.
 - **New window / incognito options** — Configure whether a link opens in a new window and/or in private/incognito mode.
 - **Custom icons per link** — Assign your own icon image to each link entry.
@@ -32,10 +32,11 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 - Windows 10/11
 - [.NET 10.0 Runtime](https://dotnet.microsoft.com/) (or later)
+- Note:  The installer package will install the .NET 10.0 runtime, on your behalf.
 
 ### Installation
 
-1. Download the Linkly setup package: [Download Linkly Setup](https://example.com/path/to/LinklySetup.exe) *(placeholder — update with your actual download URL)*
+1. Download the Linkly setup package: [Download Linkly Setup](https://github.com/<you>/<repo>/releases/download/v1.0.0/LinklySetup.exe) *(placeholder — update with your actual download URL)*
 2. Run the installer and follow the setup wizard.
 3. Once installed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 
@@ -117,20 +118,22 @@ You should never need to rebuild your configuration from scratch more than once.
 
 `LinklyConfig.json` is a plain, human-readable JSON file, so you're not limited to the configuration UI. If you'd rather bulk-create or edit links by hand — for example, generating a large batch of entries with an AI tool — you can edit `LinklyConfig.json` directly and bypass the configuration UI entirely. Linkly will pick up your changes the next time it loads the configuration.
 
-## Settings
+## Settings (TBD)
 
-Right-click the tray icon and select **Settings** to configure Linkly's general application behavior.
-
-*(Add details here as this section of the app is built out.)*
+*TBD - Add a settings menu may be in the works for future versions of Linkly *
 
 ## Icons
 
-Linkly ships with a custom set of high-resolution toolbar and context-menu icons (16px–512px, plus `.ico` files) covering common actions like Save, Open, Find, Undo, and more, along with dedicated icons for the Menu Item Configuration and Settings menu items.
+Linkly ships with a small set of sample icons for the Menu Item Configuration and Settings menu items.  The user can also add their own custom images to the Documents\Linkly folder to make use of them within the tool.
 
 ## License
 
-*(No license has been selected yet.)*
+*TBD (No license has been selected yet.)*
 
 ## Contributing
 
-*(Add contribution guidelines here if you plan to accept pull requests.)*
+*TBD*
+
+## Help & Support
+
+Please send email to [linkly.tool@gmail.com](mailto:linkly.tool@gmail.com) if you should need help, support, would like to report a bug, or have any feedback on Linkly.
