@@ -38,7 +38,9 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.0/LinklySetup.exe) *(placeholder — update with your actual download URL)*
 2. Run the installer and follow the setup wizard.
-3. Once installed, Linkly will appear in your system tray — right-click the icon to access your configured links.
+3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
+4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.
+5. Please Note: If you want Linkly to be executed automatically on start-up and/or always be displayed in your system tray, these changes will be left up to the user to configure in the Windows System Tray settings, of their own volition.  Linkly will not change any Windows settings, on your behalf.
 
 ## Configuring Your Links
 
