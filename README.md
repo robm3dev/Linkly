@@ -32,11 +32,11 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 - Windows 10/11
 - [.NET 10.0 Runtime](https://dotnet.microsoft.com/) (or later)
-- Note:  The installer package will install the .NET 10.0 runtime, on your behalf.
+- Note:  The installer package will install the .NET 10.0 runtime, on your behalf, if you don't already have it installed.
 
 ### Installation
 
-1. Download the Linkly setup package: [Download Linkly Setup](https://github.com/<you>/<repo>/releases/download/v1.0.0/LinklySetup.exe) *(placeholder — update with your actual download URL)*
+1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.0/LinklySetup.exe) *(placeholder — update with your actual download URL)*
 2. Run the installer and follow the setup wizard.
 3. Once installed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 
