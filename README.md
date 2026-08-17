@@ -4,13 +4,25 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
 
 ## Version Control
 
-| Version | Description | Date |
-|---|---|---|
-| v.1.0.0 | Initial public release of Linkly | 8/14/2026 |
-| v.1.0.1 | Bug Fixes:
-			- test
-			- test 2
-			- test 4 | 8/17/2027 |
+<table>
+  <tr><th>Version</th><th>Description</th><th>Date</th></tr>
+  <tr><td>v1.0.0</td><td>Initial public release of Linkly</td><td>8/14/2026</td></tr>
+  <tr>
+    <td>v1.0.1</td>
+    <td>Bug Fixes:
+      <ul>
+        <li>Fixed bug with the browser selection drop drown box defaulting to 'None' in Link Details Dialog.</li>
+        <li>Set the Tab Order from top-to-bottom for all fields on both the Link & Link Details settings dialogs, as well as the Input Box dialog.</li>
+        <li>Added field length limit on the Name field in the Link Details Dialog to 80 characters.</li>
+        <li>Added field length limit on the Input Box Dialog text field to 70 characters.</li>
+        <li>Locked down the Icon Image Text Box in the Link Details Dialog, so it cannot be directly edited by the user.  User must use the 'Browse' button to add or edit this field now.</li>
+        <li>Added a few more very common icon images to the \Samples directory.</li>
+        <li>Updated the Sample LinklyConfig.json file with expanded default options, including new 'Cloud Services', 'Shopping', 'Video Games' and 'Banking & Finance' headers and sample links.</li>
+      </ul>
+    </td>
+    <td>8/17/2027</td>
+  </tr>
+</table>
 
 ## Features
 
