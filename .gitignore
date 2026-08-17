@@ -12,6 +12,7 @@
 Linkly/.vs/
 
 # Ignore everything in Setup/Output
+Setup/Output
 /Setup/Output/
 
 # Build results
