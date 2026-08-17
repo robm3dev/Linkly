@@ -11,8 +11,8 @@
 .vs/
 Linkly/.vs/
 
-#Setup Output Directory
-Setup/Output/
+# Ignore everything in Setup/Output
+/Setup/Output/
 
 # Build results
 [Dd]ebug/
