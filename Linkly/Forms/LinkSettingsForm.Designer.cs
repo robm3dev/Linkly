@@ -58,7 +58,7 @@
             LinksListView.Location = new Point(19, 22);
             LinksListView.Name = "LinksListView";
             LinksListView.Size = new Size(924, 362);
-            LinksListView.TabIndex = 0;
+            LinksListView.TabIndex = 1;
             LinksListView.UseCompatibleStateImageBehavior = false;
             LinksListView.View = View.Details;
             LinksListView.DoubleClick += LinksListView_DoubleClick;
@@ -74,7 +74,7 @@
             HyperlinkConfigGroupBox.Location = new Point(13, 12);
             HyperlinkConfigGroupBox.Name = "HyperlinkConfigGroupBox";
             HyperlinkConfigGroupBox.Size = new Size(971, 431);
-            HyperlinkConfigGroupBox.TabIndex = 2;
+            HyperlinkConfigGroupBox.TabIndex = 0;
             HyperlinkConfigGroupBox.TabStop = false;
             HyperlinkConfigGroupBox.Text = "Context Menu Items";
             // 
@@ -86,7 +86,7 @@
             panel1.Location = new Point(941, 22);
             panel1.Name = "panel1";
             panel1.Size = new Size(24, 362);
-            panel1.TabIndex = 6;
+            panel1.TabIndex = 3;
             // 
             // MoveDownButton
             // 
@@ -105,7 +105,7 @@
             MoveUpButton.Location = new Point(0, 0);
             MoveUpButton.Name = "MoveUpButton";
             MoveUpButton.Size = new Size(24, 54);
-            MoveUpButton.TabIndex = 3;
+            MoveUpButton.TabIndex = 2;
             MoveUpButton.TextImageRelation = TextImageRelation.ImageAboveText;
             MoveUpButton.UseVisualStyleBackColor = true;
             MoveUpButton.Click += MoveUpButton_Click;
@@ -118,7 +118,7 @@
             DeleteButton.Location = new Point(181, 390);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(75, 35);
-            DeleteButton.TabIndex = 5;
+            DeleteButton.TabIndex = 7;
             DeleteButton.Text = "   Delete";
             DeleteButton.UseVisualStyleBackColor = true;
             DeleteButton.Click += DeleteButton_Click;
@@ -131,7 +131,7 @@
             NewButton.Location = new Point(19, 390);
             NewButton.Name = "NewButton";
             NewButton.Size = new Size(75, 35);
-            NewButton.TabIndex = 2;
+            NewButton.TabIndex = 5;
             NewButton.Text = "   New";
             NewButton.UseVisualStyleBackColor = true;
             NewButton.Click += NewButton_Click;
@@ -144,7 +144,7 @@
             EditButton.Location = new Point(100, 390);
             EditButton.Name = "EditButton";
             EditButton.Size = new Size(75, 35);
-            EditButton.TabIndex = 1;
+            EditButton.TabIndex = 6;
             EditButton.Text = "  Edit";
             EditButton.UseVisualStyleBackColor = true;
             EditButton.Click += EditButton_Click;
@@ -157,7 +157,7 @@
             CancelFormButton.Location = new Point(151, 449);
             CancelFormButton.Name = "CancelFormButton";
             CancelFormButton.Size = new Size(94, 31);
-            CancelFormButton.TabIndex = 3;
+            CancelFormButton.TabIndex = 9;
             CancelFormButton.Text = "  Cancel";
             CancelFormButton.UseVisualStyleBackColor = true;
             CancelFormButton.Click += CancelFormButton_Click;
@@ -170,7 +170,7 @@
             SaveButton.Location = new Point(13, 449);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(132, 31);
-            SaveButton.TabIndex = 4;
+            SaveButton.TabIndex = 8;
             SaveButton.Text = "   Save &&  Apply";
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.Click += SaveButton_Click;

@@ -52,13 +52,15 @@ namespace Linkly
             // Populate the Browser Type ComboBox with the possible values
             var browserTypeNames = Enum.GetNames(typeof(BrowserType));
             this.BrowserComboBox.Items.AddRange(browserTypeNames);
+            this.BrowserComboBox.Items.RemoveAt(0); // Remove the 'None' Option, so we only display valid options.
             this.BrowserComboBox.SelectedIndex = 0;
 
             if (this.EditModeType == EditModeType.Edit)
             {
                 this.NameTextBox.Text = this.OutputMenuItem.Name;
                 this.ImageTextBox.Text = this.OutputMenuItem.ImageFileName;
-                this.BrowserComboBox.SelectedIndex = (int)this.OutputMenuItem.LinkOptions.Browser;
+                // Decrement the Browser Type Integer by 1 to accomodate for removing the 'None' option from the ComboBox
+                this.BrowserComboBox.SelectedIndex = ((int)this.OutputMenuItem.LinkOptions.Browser - 1);
                 this.IncognitoCheckBox.Checked = this.OutputMenuItem.LinkOptions.IsIncognito;
                 this.NewBrowserWindowCheckBox.Checked = this.OutputMenuItem.LinkOptions.IsNewWindow;
                 this.UrlTextBox.Text = this.OutputMenuItem.LinkOptions.Url;
@@ -160,7 +162,8 @@ namespace Linkly
                 this.OutputMenuItem.MenuItemType = MenuItemType.Link;
                 this.OutputMenuItem.Name = this.NameTextBox.Text.Trim();
                 this.OutputMenuItem.ImageFileName = this.ImageTextBox.Text.Trim();
-                this.OutputMenuItem.LinkOptions.Browser = (BrowserType)this.BrowserComboBox.SelectedIndex;
+                // Increment the Selected Index by 1 to accomodate for removing the first 'None' value of the Enum
+                this.OutputMenuItem.LinkOptions.Browser = (BrowserType)(this.BrowserComboBox.SelectedIndex + 1);
                 this.OutputMenuItem.LinkOptions.Url = this.UrlTextBox.Text.Trim();
                 this.OutputMenuItem.LinkOptions.IsIncognito = this.IncognitoCheckBox.Checked;
                 this.OutputMenuItem.LinkOptions.IsNewWindow = this.NewBrowserWindowCheckBox.Checked;

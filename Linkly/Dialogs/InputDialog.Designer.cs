@@ -50,6 +50,7 @@
             InputTextBox.BackColor = SystemColors.Info;
             InputTextBox.BorderStyle = BorderStyle.FixedSingle;
             InputTextBox.Location = new Point(15, 36);
+            InputTextBox.MaxLength = 70;
             InputTextBox.Name = "InputTextBox";
             InputTextBox.Size = new Size(562, 23);
             InputTextBox.TabIndex = 1;

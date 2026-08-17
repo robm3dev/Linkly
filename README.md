@@ -2,6 +2,16 @@
 
 Linkly is a lightweight Windows system tray utility that puts a fully customizable context menu of hyperlinks right at your fingertips. Configure any number of links, organize them into sections, and launch them in the browser of your choice — all without cluttering your desktop or browser bookmarks bar.
 
+## Version Control
+
+| Version | Description | Date |
+|---|---|---|
+| v.1.0.0 | Initial public release of Linkly | 8/14/2026 |
+| v.1.0.1 | Bug Fixes:
+			- test
+			- test 2
+			- test 4 | 8/17/2027 |
+
 ## Features
 
 - **System tray access** — Linkly lives quietly in your Windows system tray and opens a (right-click) context menu of your configured links.

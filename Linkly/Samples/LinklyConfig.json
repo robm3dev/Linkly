@@ -1,4 +1,214 @@
-[
+﻿[
+  {
+    "menuItemType": "Header",
+    "name": "Cloud Services",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Azure Portal",
+    "imageFileName": "Azure.Icon.1024x1024.png",
+    "linkOptions": {
+      "url": "https://portal.azure.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Link",
+    "name": "GitHub",
+    "imageFileName": "GitHub.png",
+    "linkOptions": {
+      "url": "https://github.com/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "Social Media",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Linked-In",
+    "imageFileName": "Linked-In.Icon.png",
+    "linkOptions": {
+      "url": "https://www.linkedin.com/in/robmo3/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Facebook",
+    "imageFileName": "Facebook.png",
+    "linkOptions": {
+      "url": "www.facebook.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "Videos Games",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Steam",
+    "imageFileName": "Steam.Icon.png",
+    "linkOptions": {
+      "url": "https://store.steampowered.com/",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Game Informer",
+    "imageFileName": "Game_Informer_logo.png",
+    "linkOptions": {
+      "url": "www.gameinformer.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "Shopping",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Amazon",
+    "imageFileName": "amazon-logo.jpg",
+    "linkOptions": {
+      "url": "www.amazon.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Header",
+    "name": "Banking \u0026\u0026 Finance",
+    "imageFileName": "header.png",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": "",
+    "linkOptions": null
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Ebay",
+    "imageFileName": "ebay.icon.png",
+    "linkOptions": {
+      "url": "www.ebay.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Link",
+    "name": "PayPal",
+    "imageFileName": "PayPal-Icon.png",
+    "linkOptions": {
+      "url": "www.paypal.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Link",
+    "name": "Fidelity",
+    "imageFileName": "Fidelity.Icon.jpg",
+    "linkOptions": {
+      "url": "www.fidelity.com",
+      "browser": "Edge",
+      "isIncognito": false,
+      "isNewWindow": false,
+      "paramReplacementsDic": {}
+    }
+  },
+  {
+    "menuItemType": "Separator",
+    "name": "Separator",
+    "imageFileName": null,
+    "linkOptions": null
+  },
   {
     "menuItemType": "Header",
     "name": "Education",
@@ -13,7 +223,7 @@
   },
   {
     "menuItemType": "Link",
-    "name": "Microsoft Learn – C#",
+    "name": "Microsoft Learn \u2013 C#",
     "imageFileName": "MS.Icon.png",
     "linkOptions": {
       "url": "https://learn.microsoft.com/en-us/dotnet/csharp/",
@@ -42,6 +252,7 @@
     "linkOptions": null
   },
   {
+    "menuItemType": "Link",
     "name": "Practice Software Testing Dot Com",
     "imageFileName": "linkly_icon_512x512.png",
     "linkOptions": {
@@ -53,6 +264,7 @@
     }
   },
   {
+    "menuItemType": "Link",
     "name": "Practice Software Testing - Product ID Look-Up",
     "imageFileName": "linkly_icon_512x512.png",
     "linkOptions": {
@@ -61,7 +273,7 @@
       "isIncognito": true,
       "isNewWindow": true,
       "paramReplacementsDic": {
-        "{0}": "Product ID" // Example Value --> 01KZ9VM9VRFJYTVR2ZR5FQYQSF
+        "{0}": "Product ID"
       }
     }
   },
@@ -84,6 +296,7 @@
     "linkOptions": null
   },
   {
+    "menuItemType": "Link",
     "name": "MS Co-Pilot",
     "imageFileName": "copilot-color.png",
     "linkOptions": {
@@ -95,6 +308,7 @@
     }
   },
   {
+    "menuItemType": "Link",
     "name": "Chat GPT",
     "imageFileName": "ChatGPT.Icon.1024x1024.png",
     "linkOptions": {
@@ -106,6 +320,7 @@
     }
   },
   {
+    "menuItemType": "Link",
     "name": "Google Gemini",
     "imageFileName": "gemini_sparkle_aurora.png",
     "linkOptions": {
@@ -117,6 +332,7 @@
     }
   },
   {
+    "menuItemType": "Link",
     "name": "Claude AI",
     "imageFileName": "ClaudeIcon-Rounded.png",
     "linkOptions": {
