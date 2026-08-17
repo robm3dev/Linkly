@@ -9,6 +9,10 @@
 
 # Visual Studio cache/options directory (includes .vsidx, .suo, .ide, etc.)
 .vs/
+Linkly/.vs/
+
+#Setup Output Directory
+Setup/Output/
 
 # Build results
 [Dd]ebug/
