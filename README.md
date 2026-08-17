@@ -2,6 +2,28 @@
 
 Linkly is a lightweight Windows system tray utility that puts a fully customizable context menu of hyperlinks right at your fingertips. Configure any number of links, organize them into sections, and launch them in the browser of your choice — all without cluttering your desktop or browser bookmarks bar.
 
+## Version Control
+
+<table>
+  <tr><th>Version</th><th>Description</th><th>Date</th></tr>
+  <tr><td>v1.0.0</td><td>Initial public release of Linkly</td><td>8/14/2026</td></tr>
+  <tr>
+    <td>v1.0.1</td>
+    <td>Bug Fixes:
+      <ul>
+        <li>Fixed bug with the browser selection drop drown box defaulting to 'None' in Link Details Dialog.</li>
+        <li>Set the Tab Order from top-to-bottom for all fields on both the Link & Link Details settings dialogs, as well as the Input Box dialog.</li>
+        <li>Added field length limit on the Name field in the Link Details Dialog to 80 characters.</li>
+        <li>Added field length limit on the Input Box Dialog text field to 70 characters.</li>
+        <li>Locked down the Icon Image Text Box in the Link Details Dialog, so it cannot be directly edited by the user.  User must use the 'Browse' button to add or edit this field now.</li>
+        <li>Added a few more very common icon images to the \Samples directory.</li>
+        <li>Updated the Sample LinklyConfig.json file with expanded default options, including new 'Cloud Services', 'Shopping', 'Video Games' and 'Banking & Finance' headers and sample links.</li>
+      </ul>
+    </td>
+    <td>8/17/2027</td>
+  </tr>
+</table>
+
 ## Features
 
 - **System tray access** — Linkly lives quietly in your Windows system tray and opens a (right-click) context menu of your configured links.
@@ -36,7 +58,7 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 ### Installation
 
-1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.0/LinklySetup.exe) *(placeholder — update with your actual download URL)*
+1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.1/LinklySetup.exe) *(placeholder — update with your actual download URL)*
 2. Run the installer and follow the setup wizard.
 3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.

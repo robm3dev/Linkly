@@ -7,6 +7,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
+# Visual Studio cache/options directory (includes .vsidx, .suo, .ide, etc.)
+.vs/
+Linkly/.vs/
+
+# Ignore everything in Setup/Output
+Setup/Output
+/Setup/Output/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
