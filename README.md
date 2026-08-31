@@ -141,6 +141,8 @@ Placeholders are numbered in order — the first parameter must use `{0}`, the s
 
 ### Leaf Nodes
 
+![Leaf Menu Item Node & Sub-Item Nodes](screenshots/leaf-menu-and-sub-items.png)
+
 A **Leaf** node behaves like a Header, except that instead of the following links being listed directly in the main menu, they're displayed as a **sub-menu** (flyout/drop-down) beneath the Leaf node itself.
 
 Any Link entries placed directly beneath a Leaf node in `LinklyConfig.json` become children of that Leaf, and will appear as sub-menu items when you hover over or click the Leaf node.
