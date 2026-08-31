@@ -85,6 +85,8 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 Right-click the tray icon and select **Menu Item Configuration** to open the Context Menu Items screen.
 
+![Linkly Menu Item Configuration](screenshots/open-linkly-menu-item-configuration-dialog.png)
+
 ![Linkly Menu Item Configuration](screenshots/menu-item-configuration.png)
 *(Note the highlighted **Leaf** row — "AI Tools" — followed directly by its four child Link rows. See [Leaf Nodes](#leaf-nodes) below for how this is rendered in the tray menu.)*
 
