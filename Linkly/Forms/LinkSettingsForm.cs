@@ -33,7 +33,7 @@ namespace Linkly
             this.ButtonToolTip.SetToolTip(this.MoveDownButton, "Move Selected Menu Item Down");
             this.ButtonToolTip.SetToolTip(this.SaveButton, "Save + Apply Changes & Close");
             this.ButtonToolTip.SetToolTip(this.CancelFormButton, "Cancel Changes & Close");
-            this.ButtonToolTip.SetToolTip(this.NewButton, "Create a new Link, Header or Separator");
+            this.ButtonToolTip.SetToolTip(this.NewButton, "Create a new Link, Header, Separator or Leaf");
             this.ButtonToolTip.SetToolTip(this.EditButton, "Edit Selected Menu Item");
             this.ButtonToolTip.SetToolTip(this.DeleteButton, "Delete Selected Menu Item");
 
@@ -42,6 +42,7 @@ namespace Linkly
             listViewImages.Images.Add("LinkIcon", Properties.Resources.linkly_icon_512x512);
             listViewImages.Images.Add("HeaderIcon", Properties.Resources.header);
             listViewImages.Images.Add("SeparatorIcon", Properties.Resources.separator);
+            listViewImages.Images.Add("LeafIcon", Properties.Resources.Leaf);
 
             // Assign to the ListView - SmallImageList is used in Details/List view
             this.LinksListView.SmallImageList = listViewImages;
@@ -160,10 +161,11 @@ namespace Linkly
                     switch (config.MenuItemType)
                     {
                         case MenuItemType.Header:
+                        case MenuItemType.Leaf:
                             {
                                 // Prompt the user for the name of the new Header Menu Item Type
-                                var inputDialog = new InputDialog("Re-Enter the Header Item Text",
-                                                                  $"Please enter a new name for the '{config.Name}' Header Menu Item:");
+                                var inputDialog = new InputDialog($"Re-Enter the {config.MenuItemType} Item Text",
+                                                                  $"Please enter a new name for the '{config.Name}' {config.MenuItemType} Menu Item:");
 
                                 if (inputDialog.ShowDialog() == DialogResult.OK)
                                 {
@@ -341,6 +343,32 @@ namespace Linkly
             this.HasChanges = true;
         }
 
+        /// <summary>
+        /// New Leaf Node Context Menu Item Click Event Method 
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void leafToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Prompt the user for the name of the new Header Menu Item Type
+            var inputDialog = new InputDialog("Enter the Leaf Item Text",
+                                              "Please enter a name for the new Leaf Item:");
+
+            if (inputDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Create the Configuration Menu Item
+                var config = new MenuItem
+                {
+                    MenuItemType = MenuItemType.Leaf,
+                    Name = inputDialog.OutputTextValue,
+                    ImageFileName = "Leaf.png"
+                };
+
+                AddNewListViewItem(config);
+                this.HasChanges = true;
+            }
+        }
+
         #endregion
 
         #region ListView Grid Form Control Events
@@ -371,6 +399,14 @@ namespace Linkly
 
                 // Create the new ListView Item
                 var item = new ListViewItem(config.MenuItemType.ToString());
+                item.SubItems.Add(config.Name);
+                item.SubItems.Add(config.LinkOptions?.Browser.ToString());
+                item.SubItems.Add(config.LinkOptions?.IsNewWindow.ToString());
+                item.SubItems.Add(config.LinkOptions?.IsIncognito.ToString());
+                item.SubItems.Add(config.LinkOptions?.Url);
+                item.SubItems.Add(hasUrlParams.ToString());
+                item.Tag = config;
+                item.ImageKey = $"{config.MenuItemType.ToString()}Icon";
 
                 switch (config.MenuItemType)
                 {
@@ -383,16 +419,10 @@ namespace Linkly
                     case MenuItemType.Link:
                         item.BackColor = Color.AliceBlue;
                         break;
+                    case MenuItemType.Leaf:
+                        item.BackColor = Color.PaleGreen;
+                        break;
                 }
-
-                item.SubItems.Add(config.Name);
-                item.SubItems.Add(config.LinkOptions?.Browser.ToString());
-                item.SubItems.Add(config.LinkOptions?.IsNewWindow.ToString());
-                item.SubItems.Add(config.LinkOptions?.IsIncognito.ToString());
-                item.SubItems.Add(config.LinkOptions?.Url);
-                item.SubItems.Add(hasUrlParams.ToString());
-                item.Tag = config;
-                item.ImageKey = $"{config.MenuItemType.ToString()}Icon";
 
                 // Add the new ListViewItem to the bottom of the Grid
                 this.LinksListView.Items.Add(item);

@@ -284,15 +284,9 @@
     "linkOptions": null
   },
   {
-    "menuItemType": "Header",
+    "menuItemType": "Leaf",
     "name": "AI Tools",
-    "imageFileName": "header.png",
-    "linkOptions": null
-  },
-  {
-    "menuItemType": "Separator",
-    "name": "Separator",
-    "imageFileName": "",
+    "imageFileName": "Leaf.png",
     "linkOptions": null
   },
   {

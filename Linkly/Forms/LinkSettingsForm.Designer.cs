@@ -44,6 +44,7 @@
             linkToolStripMenuItem = new ToolStripMenuItem();
             headerToolStripMenuItem = new ToolStripMenuItem();
             separatorToolStripMenuItem = new ToolStripMenuItem();
+            leafToolStripMenuItem = new ToolStripMenuItem();
             ButtonToolTip = new ToolTip(components);
             HyperlinkConfigGroupBox.SuspendLayout();
             panel1.SuspendLayout();
@@ -177,9 +178,9 @@
             // 
             // newItemButtonContextMenuStrip
             // 
-            newItemButtonContextMenuStrip.Items.AddRange(new ToolStripItem[] { linkToolStripMenuItem, headerToolStripMenuItem, separatorToolStripMenuItem });
+            newItemButtonContextMenuStrip.Items.AddRange(new ToolStripItem[] { linkToolStripMenuItem, headerToolStripMenuItem, separatorToolStripMenuItem, leafToolStripMenuItem });
             newItemButtonContextMenuStrip.Name = "newItemButtonContextMenuStrip";
-            newItemButtonContextMenuStrip.Size = new Size(125, 70);
+            newItemButtonContextMenuStrip.Size = new Size(125, 92);
             // 
             // linkToolStripMenuItem
             // 
@@ -205,6 +206,14 @@
             separatorToolStripMenuItem.Size = new Size(124, 22);
             separatorToolStripMenuItem.Text = "Separator";
             separatorToolStripMenuItem.Click += separatorToolStripMenuItem_Click;
+            // 
+            // leafToolStripMenuItem
+            // 
+            leafToolStripMenuItem.Image = Properties.Resources.Leaf;
+            leafToolStripMenuItem.Name = "leafToolStripMenuItem";
+            leafToolStripMenuItem.Size = new Size(124, 22);
+            leafToolStripMenuItem.Text = "Leaf";
+            leafToolStripMenuItem.Click += leafToolStripMenuItem_Click;
             // 
             // LinkSettingsForm
             // 
@@ -246,5 +255,6 @@
         private Button DeleteButton;
         private ToolTip ButtonToolTip;
         private Panel panel1;
+        private ToolStripMenuItem leafToolStripMenuItem;
     }
 }

@@ -39,6 +39,11 @@ namespace Linkly.Services
                 }
             }
 
+            // Define variables to identify leaf nodes within the list
+            bool isLeafDropDown = false;
+            int leafNodeOffSet = 0;
+            ToolStripMenuItem currentLeafItem = null;
+
             /* Populate the items from the Configuration List into the ContextMenuItemStrip,
                as their designated MenuItemType, above all the static Linkly Tool Menu Items. */
             for (int i = 0; i < configuration.Count; i++)
@@ -65,13 +70,21 @@ namespace Linkly.Services
                         {
                             // Set Header Nodes with a higher font size & bold text.
                             toolStipMenuItem.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                            isLeafDropDown = false;
                             break;
                         }
                     case MenuItemType.Separator:
                         {
                             // Create & Add the Separator Node, and continue to the next iteration of the loop.
                             var toolStipSeparator = new ToolStripSeparator();
-                            this.MainContextMenuStrip.Items.Insert(i, toolStipSeparator);
+                            this.MainContextMenuStrip.Items.Insert(i - leafNodeOffSet, toolStipSeparator);
+                            isLeafDropDown = false;
+                            break;
+                        }
+                    case MenuItemType.Leaf:
+                        {
+                            // Set Leaf Nodes with a higher font size & bold text.
+                            toolStipMenuItem.Font = new Font("Segoe UI", 9, FontStyle.Bold);
                             break;
                         }
                     default:
@@ -97,7 +110,23 @@ namespace Linkly.Services
                         }
                     }
 
-                    this.MainContextMenuStrip.Items.Insert(i, toolStipMenuItem);
+                    // Determine if we are adding a standard ToolStripItem node, or a DropDownItem to a Leaf.
+                    if (isLeafDropDown)
+                    {
+                        currentLeafItem.DropDownItems.Add(toolStipMenuItem);
+                        leafNodeOffSet++;
+                    }
+                    else
+                    {
+                        this.MainContextMenuStrip.Items.Insert(i - leafNodeOffSet, toolStipMenuItem);
+                    }
+                    
+                    if (config.MenuItemType == MenuItemType.Leaf)
+                    {
+                        // Start a new Leaf Drop Down Menu
+                        isLeafDropDown = true;
+                        currentLeafItem = toolStipMenuItem;
+                    }
                 }
             }
         }
