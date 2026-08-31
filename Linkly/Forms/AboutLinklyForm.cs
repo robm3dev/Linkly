@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -26,6 +27,17 @@ namespace Linkly.Forms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// The Form Load Event Method
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void AboutLinklyForm_Load(object sender, EventArgs e)
+        {
+            var appVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            this.label1.Text = $"Linkly v{appVersion.Major}.{appVersion.Minor}.{appVersion.Build}";
         }
     }
 }

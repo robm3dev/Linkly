@@ -271,6 +271,7 @@
             Name = "AboutLinklyForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "About Linkly...";
+            Load += AboutLinklyForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

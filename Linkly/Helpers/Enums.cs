@@ -26,7 +26,8 @@ namespace Linkly
     {
         Link,
         Header,
-        Separator
+        Separator,
+        Leaf
     }
 
     /// <summary>

@@ -20,7 +20,20 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
         <li>Updated the Sample LinklyConfig.json file with expanded default options, including new 'Cloud Services', 'Shopping', 'Video Games' and 'Banking & Finance' headers and sample links.</li>
       </ul>
     </td>
-    <td>8/17/2027</td>
+    <td>8/17/2026</td>
+  </tr>
+  <tr>
+    <td>v1.0.2</td>
+     <td>
+      <ul>
+        <li>New Feature:  Added new 'Leaf' parent node menu item feature, where a new Leaf node can be added, and any links stored directly beneath the Leaf node will be displayed as sub-menu items or drop down items from the parent Leaf node.</li>
+        <li>Added new Product Version to the Project file to match the app and file version.</li>
+        <li>Updated the 'Help --> About Linkly' dialog to dynamically display the product version from the project file instead of hard coding it as a string.</li>
+        <li>Updated Sample LinklyConfig.json file display the 'AI Tools' node as a Leaf node, as an example of the new feature.</li>
+        <li>Included new Leaf.png image as a sample image to be copied to the \Linkly\ folder on first run of the application.</li>
+      </ul>
+    </td>
+    <td>8/31/2026</td>
   </tr>
 </table>
 
@@ -33,18 +46,22 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
 - **Custom icons per link** — Assign your own icon image to each link entry.
 - **Dynamic URL parameters** — Define named parameters with placeholder values to build dynamic lookup links (e.g. product ID lookups) from a single configuration entry.
 - **Organized sections** — Group related links under headers with separators for a clean, organized menu.
+- **Sub-menus with Leaf nodes** — Nest related links beneath a Leaf node to display them as a collapsible sub-menu instead of a flat list.
 
 ## Menu Overview
 
 Once running, Linkly sits in your Windows system tray. Right-click the tray icon to open your configured menu:
 
+![Linkly System Tray Context Menu Icon](screenshots/tray-menu-icon.png)
+
 ![Linkly Tray Menu](screenshots/tray-menu-overview.png)
 
-The menu is built from three types of entries:
+The menu is built from four types of entries:
 
-- **Header** — a bold, labeled section divider (e.g. *Education*, *Software Testing*, *AI Tools*) used to group related links together.
+- **Header** — a bold, labeled section divider (e.g. *Cloud Services*, *Social Media*, *Shopping*) used to group related links together.
 - **Separator** — a thin horizontal line used to visually break up sections without adding a label.
 - **Link** — a clickable entry (shown with its site's icon) that opens the configured URL in your chosen browser.
+- **Leaf** — a special parent node whose child links are displayed as a sub-menu (flyout/drop-down) beneath it, instead of being listed directly in the main menu. In the screenshot above, **AI Tools** is a Leaf node — hovering over it opens a flyout containing MS Co-Pilot, Chat GPT, Google Gemini, and Claude AI. See [Leaf Nodes](#leaf-nodes) below for details.
 
 At the bottom of the menu you'll also find **Menu Item Configuration** (to edit your links), **About Linkly**, and **Exit**.
 
@@ -58,7 +75,7 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 ### Installation
 
-1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.1/LinklySetup.exe) *(placeholder — update with your actual download URL)*
+1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.2/LinklySetup.exe)
 2. Run the installer and follow the setup wizard.
 3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.
@@ -68,7 +85,10 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 Right-click the tray icon and select **Menu Item Configuration** to open the Context Menu Items screen.
 
+![Linkly Menu Item Configuration](screenshots/open-linkly-menu-item-configuration-dialog.png)
+
 ![Linkly Menu Item Configuration](screenshots/menu-item-configuration.png)
+*(Note the highlighted **Leaf** row — "AI Tools" — followed directly by its four child Link rows. See [Leaf Nodes](#leaf-nodes) below for how this is rendered in the tray menu.)*
 
 From here you can:
 
@@ -88,6 +108,7 @@ Clicking **New** opens a small menu letting you choose which type of entry to ad
 
 - **Header** — a labeled section divider in the menu
 - **Separator** — a plain visual divider
+- **Leaf** - similar to a Header, but will display any following links in a fly-out / sub-menu
 - **Link** — a clickable hyperlink, configured via the Link Configuration dialog:
 
   ![Link Configuration Dialog](screenshots/link-configuration-dialog.png)
@@ -117,6 +138,36 @@ When clicked, Linkly prompts the user for a **Product ID** and substitutes it in
 ![URL Parameter Prompt](screenshots/url-parameter-prompt.png)
 
 Placeholders are numbered in order — the first parameter must use `{0}`, the second `{1}`, and so on. Linkly enforces that a placeholder is present in the Url before its corresponding parameter name can be configured.
+
+### Leaf Nodes
+
+![Leaf Menu Item Node & Sub-Item Nodes](screenshots/leaf-menu-and-sub-items.png)
+
+A **Leaf** node behaves like a Header, except that instead of the following links being listed directly in the main menu, they're displayed as a **sub-menu** (flyout/drop-down) beneath the Leaf node itself.
+
+Any Link entries placed directly beneath a Leaf node in `LinklyConfig.json` become children of that Leaf, and will appear as sub-menu items when you hover over or click the Leaf node.
+
+**What ends a Leaf's sub-menu:** a Leaf node's children continue until Linkly encounters either a **Separator** or a standard **Header** entry in the configuration. That entry — and everything after it — is treated as a terminator: it (and any items that follow) will be displayed as normal top-level menu items again, *not* as children of the Leaf. In other words, only consecutive Link entries directly following a Leaf become part of its sub-menu.
+
+**Example configuration structure:**
+
+```
+Leaf: AI Tools
+  Link: MS Co-Pilot
+  Link: Chat GPT
+  Link: Google Gemini
+  Link: Claude AI
+Separator                  ← terminates the "AI Tools" Leaf
+Header: Shopping
+  Link: Amazon
+```
+
+In the menu, this renders as:
+- **AI Tools** ▸ *(hover to see a sub-menu containing MS Co-Pilot, Chat GPT, Google Gemini, and Claude AI)*
+- a normal separator line
+- **Shopping** header, followed by the Amazon link as a regular top-level entry
+
+Leaf nodes are useful for keeping the top-level menu short while still organizing a larger number of related links — see the `AI Tools` entry in the sample `LinklyConfig.json` for a working example.
 
 ## Configuration Storage & Backup
 
