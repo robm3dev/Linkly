@@ -22,8 +22,9 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
     </td>
     <td>8/17/2026</td>
   </tr>
-    <tr>
+  <tr>
     <td>v1.0.2</td>
+     <td>
       <ul>
         <li>New Feature:  Added new 'Leaf' parent node menu item feature, where a new Leaf ndoe can be added, and any links stored directly beneath the Leaf node will be displayed as sub-menu items or drop down items from the parent Leaf node.</li>
         <li>Added new Product Version to the Project file to match the app and file version.</li>
