@@ -52,6 +52,8 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
 
 Once running, Linkly sits in your Windows system tray. Right-click the tray icon to open your configured menu:
 
+![Linkly System Tray Context Menu Icon](screenshots/tray-menu-icon.png)
+
 ![Linkly Tray Menu](screenshots/tray-menu-overview.png)
 
 The menu is built from four types of entries:
@@ -82,8 +84,6 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 ## Configuring Your Links
 
 Right-click the tray icon and select **Menu Item Configuration** to open the Context Menu Items screen.
-
-![Linkly System Tray Context Menu Icon](screenshots/tray-menu-icon.png)
 
 ![Linkly Menu Item Configuration](screenshots/menu-item-configuration.png)
 *(Note the highlighted **Leaf** row — "AI Tools" — followed directly by its four child Link rows. See [Leaf Nodes](#leaf-nodes) below for how this is rendered in the tray menu.)*
