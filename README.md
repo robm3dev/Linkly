@@ -26,7 +26,7 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
     <td>v1.0.2</td>
      <td>
       <ul>
-        <li>New Feature:  Added new 'Leaf' parent node menu item feature, where a new Leaf ndoe can be added, and any links stored directly beneath the Leaf node will be displayed as sub-menu items or drop down items from the parent Leaf node.</li>
+        <li>New Feature:  Added new 'Leaf' parent node menu item feature, where a new Leaf node can be added, and any links stored directly beneath the Leaf node will be displayed as sub-menu items or drop down items from the parent Leaf node.</li>
         <li>Added new Product Version to the Project file to match the app and file version.</li>
         <li>Updated the 'Help --> About Linkly' dialog to dynamically display the product version from the project file instead of hard coding it as a string.</li>
         <li>Updated Sample LinklyConfig.json file display the 'AI Tools' node as a Leaf node, as an example of the new feature.</li>
@@ -73,7 +73,7 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 ### Installation
 
-1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.1/LinklySetup.exe) *(placeholder — update with your actual download URL)*
+1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.2/LinklySetup.exe)
 2. Run the installer and follow the setup wizard.
 3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.
@@ -104,6 +104,7 @@ Clicking **New** opens a small menu letting you choose which type of entry to ad
 
 - **Header** — a labeled section divider in the menu
 - **Separator** — a plain visual divider
+- **Leaf** - similar to a Header, but will display any following links in a fly-out / sub-menu
 - **Link** — a clickable hyperlink, configured via the Link Configuration dialog:
 
   ![Link Configuration Dialog](screenshots/link-configuration-dialog.png)
@@ -117,6 +118,22 @@ Clicking **New** opens a small menu letting you choose which type of entry to ad
   | **New Browser Window?** | Whether to open in a new browser window |
   | **Url** | The target URL |
   | **Url Parameters** | Optional table of named parameters, each with a placeholder value, for building dynamic links (e.g. product ID lookups) |
+
+#### Example: Dynamic URL Parameters
+
+URL Parameters let a single link prompt the user for a value at click-time and substitute it into the URL. For example, a "Product ID Look-Up" link might be configured like this:
+
+![URL Parameters Example](screenshots/url-parameters-example.png)
+
+- **Url:** `https://practicesoftwaretesting.com/product/{0}`
+- **Param Name:** `Product ID`
+- **Param Placeholder Value:** `{0}`
+
+When clicked, Linkly prompts the user for a **Product ID** and substitutes it into the URL in place of `{0}`.
+
+![URL Parameter Prompt](screenshots/url-parameter-prompt.png)
+
+Placeholders are numbered in order — the first parameter must use `{0}`, the second `{1}`, and so on. Linkly enforces that a placeholder is present in the Url before its corresponding parameter name can be configured.
 
 ### Leaf Nodes
 
@@ -145,22 +162,6 @@ In the menu, this renders as:
 - **Shopping** header, followed by the Amazon link as a regular top-level entry
 
 Leaf nodes are useful for keeping the top-level menu short while still organizing a larger number of related links — see the `AI Tools` entry in the sample `LinklyConfig.json` for a working example.
-
-#### Example: Dynamic URL Parameters
-
-URL Parameters let a single link prompt the user for a value at click-time and substitute it into the URL. For example, a "Product ID Look-Up" link might be configured like this:
-
-![URL Parameters Example](screenshots/url-parameters-example.png)
-
-- **Url:** `https://practicesoftwaretesting.com/product/{0}`
-- **Param Name:** `Product ID`
-- **Param Placeholder Value:** `{0}`
-
-When clicked, Linkly prompts the user for a **Product ID** and substitutes it into the URL in place of `{0}`.
-
-![URL Parameter Prompt](screenshots/url-parameter-prompt.png)
-
-Placeholders are numbered in order — the first parameter must use `{0}`, the second `{1}`, and so on. Linkly enforces that a placeholder is present in the Url before its corresponding parameter name can be configured.
 
 ## Configuration Storage & Backup
 
