@@ -18,12 +18,19 @@ public static class BrowserService
     /// new-window behavior when supported by the browser.
     /// </summary>
     /// <param name="link">The link containing the URL, browser type, and launch options.</param>
-    public static void OpenBrowser(MenuItem menuItem)
+    /// <param name="isStartup">The isStartup Boolean parameter indicating if the link is being launched on startup.
+    ///                         Default value is false.
+    ///                         Startup links will bypass any error handling or parameter input prompts, 
+    ///                         so the app can load without being blocked by user interaction requests.</param>
+    public static void OpenBrowser(MenuItem menuItem, bool isStartup = false)
     {
         string exePath = FindBrowserExecutable(menuItem.LinkOptions.Browser);
 
         if (string.IsNullOrWhiteSpace(exePath))
         {
+            /* ByPass error handling prompts on start-up processes and return */
+            if (isStartup) { return; }
+
             /* If the browser executable cannot be found, notify the user,
                and exit the method without attempting to launch the browser. */
             MessageBox.Show($"Could not locate executable for Browser Type '{menuItem.LinkOptions.Browser}'." + 
@@ -37,7 +44,10 @@ public static class BrowserService
 
         if (menuItem.LinkOptions.ParamReplacementsDic != null && 
             menuItem.LinkOptions.ParamReplacementsDic.Count > 0)
-        {    
+        {
+            /* ByPass parameter value input prompts on start-up processes and return */
+            if (isStartup) { return; }
+
             foreach (var kvp in menuItem.LinkOptions.ParamReplacementsDic)
             {
                 /* Prompt the user for each parameter value and perform a 

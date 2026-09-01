@@ -20,6 +20,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -32,6 +33,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -62,6 +64,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -74,6 +77,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -104,6 +108,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -116,6 +121,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -146,6 +152,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -176,6 +183,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -188,6 +196,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -200,6 +209,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -230,6 +240,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -260,6 +271,7 @@
       "browser": "Chrome",
       "isIncognito": true,
       "isNewWindow": true,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -272,6 +284,7 @@
       "browser": "Chrome",
       "isIncognito": true,
       "isNewWindow": true,
+      "launchOnStartup": false,
       "paramReplacementsDic": {
         "{0}": "Product ID"
       }
@@ -298,6 +311,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -310,6 +324,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -322,6 +337,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   },
@@ -334,6 +350,7 @@
       "browser": "Edge",
       "isIncognito": false,
       "isNewWindow": false,
+      "launchOnStartup": false,
       "paramReplacementsDic": {}
     }
   }

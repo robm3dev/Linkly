@@ -48,6 +48,9 @@
             CloseButton = new Button();
             panel6 = new Panel();
             panel7 = new Panel();
+            panel8 = new Panel();
+            DonateButton = new Button();
+            label9 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -96,16 +99,16 @@
             label5.Font = new Font("Segoe UI", 10F);
             label5.Location = new Point(14, 187);
             label5.Name = "label5";
-            label5.Size = new Size(562, 21);
+            label5.Size = new Size(337, 21);
             label5.TabIndex = 4;
             label5.Text = "For questions or support please send email to:";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.TextAlign = ContentAlignment.MiddleRight;
             // 
             // EmailLinkLabel
             // 
             EmailLinkLabel.AutoSize = true;
             EmailLinkLabel.Font = new Font("Segoe UI Historic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EmailLinkLabel.Location = new Point(212, 208);
+            EmailLinkLabel.Location = new Point(357, 187);
             EmailLinkLabel.Name = "EmailLinkLabel";
             EmailLinkLabel.Size = new Size(157, 20);
             EmailLinkLabel.TabIndex = 5;
@@ -143,7 +146,7 @@
             // 
             panel4.BackColor = SystemColors.ActiveCaption;
             panel4.BorderStyle = BorderStyle.Fixed3D;
-            panel4.Location = new Point(14, 242);
+            panel4.Location = new Point(14, 211);
             panel4.Name = "panel4";
             panel4.Size = new Size(562, 10);
             panel4.TabIndex = 9;
@@ -151,7 +154,7 @@
             // label6
             // 
             label6.Font = new Font("Segoe UI", 10F);
-            label6.Location = new Point(14, 261);
+            label6.Location = new Point(14, 230);
             label6.Name = "label6";
             label6.Size = new Size(562, 24);
             label6.TabIndex = 10;
@@ -162,7 +165,7 @@
             // 
             WebSiteLinkLabel.AutoSize = true;
             WebSiteLinkLabel.Font = new Font("Segoe UI Historic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            WebSiteLinkLabel.Location = new Point(212, 285);
+            WebSiteLinkLabel.Location = new Point(212, 254);
             WebSiteLinkLabel.Name = "WebSiteLinkLabel";
             WebSiteLinkLabel.Size = new Size(172, 20);
             WebSiteLinkLabel.TabIndex = 11;
@@ -173,7 +176,7 @@
             // 
             linkLabel2.AutoSize = true;
             linkLabel2.Font = new Font("Segoe UI Historic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel2.Location = new Point(163, 341);
+            linkLabel2.Location = new Point(163, 310);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(260, 20);
             linkLabel2.TabIndex = 12;
@@ -183,7 +186,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 10F);
-            label7.Location = new Point(14, 317);
+            label7.Location = new Point(14, 286);
             label7.Name = "label7";
             label7.Size = new Size(562, 24);
             label7.TabIndex = 13;
@@ -194,7 +197,7 @@
             // 
             panel5.BackColor = SystemColors.ActiveCaption;
             panel5.BorderStyle = BorderStyle.Fixed3D;
-            panel5.Location = new Point(14, 379);
+            panel5.Location = new Point(14, 348);
             panel5.Name = "panel5";
             panel5.Size = new Size(562, 10);
             panel5.TabIndex = 14;
@@ -202,7 +205,7 @@
             // label8
             // 
             label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label8.Location = new Point(14, 392);
+            label8.Location = new Point(16, 482);
             label8.Name = "label8";
             label8.Size = new Size(562, 24);
             label8.TabIndex = 15;
@@ -213,9 +216,9 @@
             // 
             CloseButton.BackColor = SystemColors.ButtonFace;
             CloseButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CloseButton.Location = new Point(12, 484);
+            CloseButton.Location = new Point(212, 574);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(562, 38);
+            CloseButton.Size = new Size(164, 35);
             CloseButton.TabIndex = 16;
             CloseButton.Text = "Close";
             CloseButton.UseVisualStyleBackColor = false;
@@ -226,7 +229,7 @@
             panel6.BackgroundImage = Properties.Resources.linkly_icon_v2_32x32;
             panel6.BackgroundImageLayout = ImageLayout.Center;
             panel6.BorderStyle = BorderStyle.Fixed3D;
-            panel6.Location = new Point(14, 419);
+            panel6.Location = new Point(16, 509);
             panel6.Name = "panel6";
             panel6.Size = new Size(560, 43);
             panel6.TabIndex = 17;
@@ -235,16 +238,48 @@
             // 
             panel7.BackColor = SystemColors.ActiveCaption;
             panel7.BorderStyle = BorderStyle.Fixed3D;
-            panel7.Location = new Point(14, 468);
+            panel7.Location = new Point(16, 558);
             panel7.Name = "panel7";
             panel7.Size = new Size(562, 10);
             panel7.TabIndex = 15;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = SystemColors.ActiveCaption;
+            panel8.BorderStyle = BorderStyle.Fixed3D;
+            panel8.Location = new Point(12, 469);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(562, 10);
+            panel8.TabIndex = 18;
+            // 
+            // DonateButton
+            // 
+            DonateButton.Image = Properties.Resources.donate_with_paypal_payment_button;
+            DonateButton.Location = new Point(163, 407);
+            DonateButton.Name = "DonateButton";
+            DonateButton.Size = new Size(260, 56);
+            DonateButton.TabIndex = 19;
+            DonateButton.UseVisualStyleBackColor = true;
+            DonateButton.Click += DonateButton_Click;
+            // 
+            // label9
+            // 
+            label9.Font = new Font("Segoe UI", 10F);
+            label9.Location = new Point(14, 361);
+            label9.Name = "label9";
+            label9.Size = new Size(562, 43);
+            label9.TabIndex = 20;
+            label9.Text = "If you enjoy using Linkly, please consider supporting the author by making a donation, by clicking the button below.";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AboutLinklyForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(590, 534);
+            ClientSize = new Size(590, 615);
+            Controls.Add(label9);
+            Controls.Add(DonateButton);
+            Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(CloseButton);
@@ -297,5 +332,8 @@
         private Button CloseButton;
         private Panel panel6;
         private Panel panel7;
+        private Panel panel8;
+        private Button DonateButton;
+        private Label label9;
     }
 }

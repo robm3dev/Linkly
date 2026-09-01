@@ -41,7 +41,15 @@ namespace Linkly
             }
             else
             {
-                this.UiMenuService.PopulateMenuItemsFromConfiguration(configuration);
+                /* Populate the ContextMenuStrip with the configuration data, 
+                   and return a list of any Links that have the IsLaunchOnStartup property set to true. */
+                var startupLinks = this.UiMenuService.PopulateMenuItemsFromConfiguration(configuration);
+
+                // Automatically launch all of the Links that have the IsLaunchOnStartup property set to true.
+                foreach (var link in startupLinks)
+                {
+                    BrowserService.OpenBrowser(link, isStartup: true);
+                }
             }
         }
 

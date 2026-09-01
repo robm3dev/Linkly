@@ -49,6 +49,7 @@
             groupBox1 = new GroupBox();
             RemoveAllParamsButton = new Button();
             AddParamButton = new Button();
+            LaunchOnStartupCheckBox = new CheckBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(49, 206);
+            label2.Location = new Point(49, 213);
             label2.Name = "label2";
             label2.Size = new Size(25, 15);
             label2.TabIndex = 9;
@@ -82,7 +83,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 246);
+            label4.Location = new Point(21, 253);
             label4.Name = "label4";
             label4.Size = new Size(87, 15);
             label4.TabIndex = 11;
@@ -102,7 +103,7 @@
             // 
             UrlTextBox.BackColor = SystemColors.Info;
             UrlTextBox.BorderStyle = BorderStyle.FixedSingle;
-            UrlTextBox.Location = new Point(80, 203);
+            UrlTextBox.Location = new Point(80, 210);
             UrlTextBox.Name = "UrlTextBox";
             UrlTextBox.Size = new Size(557, 23);
             UrlTextBox.TabIndex = 10;
@@ -122,7 +123,7 @@
             ParamsListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             ParamsListView.FullRowSelect = true;
             ParamsListView.GridLines = true;
-            ParamsListView.Location = new Point(114, 246);
+            ParamsListView.Location = new Point(114, 253);
             ParamsListView.Name = "ParamsListView";
             ParamsListView.Size = new Size(523, 140);
             ParamsListView.TabIndex = 12;
@@ -141,7 +142,7 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(13, 448);
+            SaveButton.Location = new Point(13, 455);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(75, 23);
             SaveButton.TabIndex = 15;
@@ -151,7 +152,7 @@
             // 
             // CancelFormButton
             // 
-            CancelFormButton.Location = new Point(94, 448);
+            CancelFormButton.Location = new Point(94, 455);
             CancelFormButton.Name = "CancelFormButton";
             CancelFormButton.Size = new Size(75, 23);
             CancelFormButton.TabIndex = 16;
@@ -192,7 +193,7 @@
             // NewBrowserWindowCheckBox
             // 
             NewBrowserWindowCheckBox.AutoSize = true;
-            NewBrowserWindowCheckBox.Location = new Point(257, 169);
+            NewBrowserWindowCheckBox.Location = new Point(256, 160);
             NewBrowserWindowCheckBox.Name = "NewBrowserWindowCheckBox";
             NewBrowserWindowCheckBox.Size = new Size(147, 19);
             NewBrowserWindowCheckBox.TabIndex = 8;
@@ -202,7 +203,7 @@
             // IncognitoCheckBox
             // 
             IncognitoCheckBox.AutoSize = true;
-            IncognitoCheckBox.Location = new Point(257, 145);
+            IncognitoCheckBox.Location = new Point(256, 136);
             IncognitoCheckBox.Name = "IncognitoCheckBox";
             IncognitoCheckBox.Size = new Size(116, 19);
             IncognitoCheckBox.TabIndex = 7;
@@ -211,6 +212,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(LaunchOnStartupCheckBox);
             groupBox1.Controls.Add(RemoveAllParamsButton);
             groupBox1.Controls.Add(AddParamButton);
             groupBox1.Controls.Add(BrowserComboBox);
@@ -228,14 +230,14 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Location = new Point(13, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(657, 430);
+            groupBox1.Size = new Size(657, 437);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Link Configuration";
             // 
             // RemoveAllParamsButton
             // 
-            RemoveAllParamsButton.Location = new Point(196, 394);
+            RemoveAllParamsButton.Location = new Point(196, 401);
             RemoveAllParamsButton.Name = "RemoveAllParamsButton";
             RemoveAllParamsButton.Size = new Size(75, 23);
             RemoveAllParamsButton.TabIndex = 14;
@@ -245,7 +247,7 @@
             // 
             // AddParamButton
             // 
-            AddParamButton.Location = new Point(115, 394);
+            AddParamButton.Location = new Point(115, 401);
             AddParamButton.Name = "AddParamButton";
             AddParamButton.Size = new Size(75, 23);
             AddParamButton.TabIndex = 13;
@@ -253,11 +255,21 @@
             AddParamButton.UseVisualStyleBackColor = true;
             AddParamButton.Click += AddParamButton_Click;
             // 
+            // LaunchOnStartupCheckBox
+            // 
+            LaunchOnStartupCheckBox.AutoSize = true;
+            LaunchOnStartupCheckBox.Location = new Point(256, 183);
+            LaunchOnStartupCheckBox.Name = "LaunchOnStartupCheckBox";
+            LaunchOnStartupCheckBox.Size = new Size(130, 19);
+            LaunchOnStartupCheckBox.TabIndex = 15;
+            LaunchOnStartupCheckBox.Text = "Launch On Startup?";
+            LaunchOnStartupCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LinkDetailsSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(686, 482);
+            ClientSize = new Size(686, 490);
             Controls.Add(groupBox1);
             Controls.Add(CancelFormButton);
             Controls.Add(SaveButton);
@@ -295,5 +307,6 @@
         private GroupBox groupBox1;
         private Button AddParamButton;
         private Button RemoveAllParamsButton;
+        private CheckBox LaunchOnStartupCheckBox;
     }
 }
