@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LinkSettingsForm));
             LinksListView = new ListView();
+            linksListViewContextMenuStrip = new ContextMenuStrip(components);
+            duplicateToolStripMenuItem = new ToolStripMenuItem();
             HyperlinkConfigGroupBox = new GroupBox();
             panel1 = new Panel();
             MoveDownButton = new Button();
@@ -46,6 +48,10 @@
             separatorToolStripMenuItem = new ToolStripMenuItem();
             leafToolStripMenuItem = new ToolStripMenuItem();
             ButtonToolTip = new ToolTip(components);
+            moveItemsUpToolStripMenuItem = new ToolStripMenuItem();
+            moveItemsDownToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            linksListViewContextMenuStrip.SuspendLayout();
             HyperlinkConfigGroupBox.SuspendLayout();
             panel1.SuspendLayout();
             newItemButtonContextMenuStrip.SuspendLayout();
@@ -54,15 +60,30 @@
             // LinksListView
             // 
             LinksListView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LinksListView.ContextMenuStrip = linksListViewContextMenuStrip;
             LinksListView.FullRowSelect = true;
             LinksListView.GridLines = true;
             LinksListView.Location = new Point(19, 22);
             LinksListView.Name = "LinksListView";
-            LinksListView.Size = new Size(924, 362);
+            LinksListView.Size = new Size(1056, 436);
             LinksListView.TabIndex = 1;
             LinksListView.UseCompatibleStateImageBehavior = false;
             LinksListView.View = View.Details;
             LinksListView.DoubleClick += LinksListView_DoubleClick;
+            // 
+            // linksListViewContextMenuStrip
+            // 
+            linksListViewContextMenuStrip.Items.AddRange(new ToolStripItem[] { duplicateToolStripMenuItem, toolStripSeparator1, moveItemsUpToolStripMenuItem, moveItemsDownToolStripMenuItem });
+            linksListViewContextMenuStrip.Name = "linksListViewContextMenuStrip";
+            linksListViewContextMenuStrip.Size = new Size(181, 98);
+            // 
+            // duplicateToolStripMenuItem
+            // 
+            duplicateToolStripMenuItem.Image = Properties.Resources.duplicate_icon_512x512;
+            duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
+            duplicateToolStripMenuItem.Size = new Size(180, 22);
+            duplicateToolStripMenuItem.Text = "Duplicate Item(s)";
+            duplicateToolStripMenuItem.Click += duplicateToolStripMenuItem_Click;
             // 
             // HyperlinkConfigGroupBox
             // 
@@ -74,25 +95,27 @@
             HyperlinkConfigGroupBox.Controls.Add(LinksListView);
             HyperlinkConfigGroupBox.Location = new Point(13, 12);
             HyperlinkConfigGroupBox.Name = "HyperlinkConfigGroupBox";
-            HyperlinkConfigGroupBox.Size = new Size(971, 431);
+            HyperlinkConfigGroupBox.Size = new Size(1103, 505);
             HyperlinkConfigGroupBox.TabIndex = 0;
             HyperlinkConfigGroupBox.TabStop = false;
             HyperlinkConfigGroupBox.Text = "Context Menu Items";
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ControlDark;
             panel1.Controls.Add(MoveDownButton);
             panel1.Controls.Add(MoveUpButton);
-            panel1.Location = new Point(941, 22);
+            panel1.Location = new Point(1073, 22);
             panel1.Name = "panel1";
-            panel1.Size = new Size(24, 362);
+            panel1.Size = new Size(24, 436);
             panel1.TabIndex = 3;
             // 
             // MoveDownButton
             // 
+            MoveDownButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             MoveDownButton.Image = Properties.Resources.Arrow_Down_Blue_32x32;
-            MoveDownButton.Location = new Point(0, 306);
+            MoveDownButton.Location = new Point(0, 380);
             MoveDownButton.Name = "MoveDownButton";
             MoveDownButton.Size = new Size(24, 56);
             MoveDownButton.TabIndex = 4;
@@ -102,6 +125,7 @@
             // 
             // MoveUpButton
             // 
+            MoveUpButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MoveUpButton.Image = Properties.Resources.Arrow_Up_Blue_32x32;
             MoveUpButton.Location = new Point(0, 0);
             MoveUpButton.Name = "MoveUpButton";
@@ -113,10 +137,11 @@
             // 
             // DeleteButton
             // 
+            DeleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             DeleteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             DeleteButton.Image = Properties.Resources.Delete_16x16;
             DeleteButton.ImageAlign = ContentAlignment.MiddleLeft;
-            DeleteButton.Location = new Point(181, 390);
+            DeleteButton.Location = new Point(181, 464);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(75, 35);
             DeleteButton.TabIndex = 7;
@@ -126,10 +151,11 @@
             // 
             // NewButton
             // 
+            NewButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             NewButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             NewButton.Image = Properties.Resources.Add_16x16;
             NewButton.ImageAlign = ContentAlignment.MiddleLeft;
-            NewButton.Location = new Point(19, 390);
+            NewButton.Location = new Point(19, 464);
             NewButton.Name = "NewButton";
             NewButton.Size = new Size(75, 35);
             NewButton.TabIndex = 5;
@@ -139,10 +165,11 @@
             // 
             // EditButton
             // 
+            EditButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             EditButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             EditButton.Image = Properties.Resources.Edit_16x16;
             EditButton.ImageAlign = ContentAlignment.MiddleLeft;
-            EditButton.Location = new Point(100, 390);
+            EditButton.Location = new Point(100, 464);
             EditButton.Name = "EditButton";
             EditButton.Size = new Size(75, 35);
             EditButton.TabIndex = 6;
@@ -152,10 +179,11 @@
             // 
             // CancelFormButton
             // 
+            CancelFormButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             CancelFormButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             CancelFormButton.Image = Properties.Resources.Block_16x16;
             CancelFormButton.ImageAlign = ContentAlignment.MiddleLeft;
-            CancelFormButton.Location = new Point(151, 449);
+            CancelFormButton.Location = new Point(151, 523);
             CancelFormButton.Name = "CancelFormButton";
             CancelFormButton.Size = new Size(94, 31);
             CancelFormButton.TabIndex = 9;
@@ -165,10 +193,11 @@
             // 
             // SaveButton
             // 
+            SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             SaveButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             SaveButton.Image = Properties.Resources.Save_16x16;
             SaveButton.ImageAlign = ContentAlignment.MiddleLeft;
-            SaveButton.Location = new Point(13, 449);
+            SaveButton.Location = new Point(13, 523);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(132, 31);
             SaveButton.TabIndex = 8;
@@ -215,23 +244,45 @@
             leafToolStripMenuItem.Text = "Leaf";
             leafToolStripMenuItem.Click += leafToolStripMenuItem_Click;
             // 
+            // moveItemsUpToolStripMenuItem
+            // 
+            moveItemsUpToolStripMenuItem.Image = Properties.Resources.Arrow_Up_Blue_32x32;
+            moveItemsUpToolStripMenuItem.Name = "moveItemsUpToolStripMenuItem";
+            moveItemsUpToolStripMenuItem.Size = new Size(180, 22);
+            moveItemsUpToolStripMenuItem.Text = "Move Item(s) Up";
+            moveItemsUpToolStripMenuItem.Click += moveItemsUpToolStripMenuItem_Click;
+            // 
+            // moveItemsDownToolStripMenuItem
+            // 
+            moveItemsDownToolStripMenuItem.Image = Properties.Resources.Arrow_Down_Blue_32x32;
+            moveItemsDownToolStripMenuItem.Name = "moveItemsDownToolStripMenuItem";
+            moveItemsDownToolStripMenuItem.Size = new Size(180, 22);
+            moveItemsDownToolStripMenuItem.Text = "Move Item(s) Down";
+            moveItemsDownToolStripMenuItem.Click += moveItemsDownToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(177, 6);
+            // 
             // LinkSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = CancelFormButton;
-            ClientSize = new Size(996, 486);
+            ClientSize = new Size(1128, 560);
             Controls.Add(SaveButton);
             Controls.Add(CancelFormButton);
             Controls.Add(HyperlinkConfigGroupBox);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
             MinimizeBox = false;
+            MinimumSize = new Size(400, 400);
             Name = "LinkSettingsForm";
+            SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Linkly Menu Item Configuration";
             Load += LinkSettingsForm_Load;
+            linksListViewContextMenuStrip.ResumeLayout(false);
             HyperlinkConfigGroupBox.ResumeLayout(false);
             panel1.ResumeLayout(false);
             newItemButtonContextMenuStrip.ResumeLayout(false);
@@ -256,5 +307,10 @@
         private ToolTip ButtonToolTip;
         private Panel panel1;
         private ToolStripMenuItem leafToolStripMenuItem;
+        private ContextMenuStrip linksListViewContextMenuStrip;
+        private ToolStripMenuItem duplicateToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem moveItemsUpToolStripMenuItem;
+        private ToolStripMenuItem moveItemsDownToolStripMenuItem;
     }
 }

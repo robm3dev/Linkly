@@ -27,7 +27,8 @@ namespace Linkly.Services
         /// in the UI control, before it begins to re-populate the new items passed into this method.
         /// </summary>
         /// <param name="configuration">The List of MenuItem objects de-serialized from the </param>
-        public void PopulateMenuItemsFromConfiguration(List<MenuItem> configuration)
+        /// <returns>The list of Link menu items to be launched on startup</returns>
+        public List<MenuItem> PopulateMenuItemsFromConfiguration(List<MenuItem> configuration)
         {
             /* Remove all items from the context menu until we are left with only the
                item named linklyMainToolStripSeparator and all static items below it. */
@@ -39,6 +40,9 @@ namespace Linkly.Services
                 }
             }
 
+            // Define return list of Links to be launched on startup of the application
+            var startupLinks = new List<MenuItem>();
+
             // Define variables to identify leaf nodes within the list
             bool isLeafDropDown = false;
             int leafNodeOffSet = 0;
@@ -49,6 +53,13 @@ namespace Linkly.Services
             for (int i = 0; i < configuration.Count; i++)
             {
                 var config = configuration[i];
+
+                /* Build the return list of links to be launched on startup, if any are defined in the configuration. */
+                if (config.MenuItemType == MenuItemType.Link && config.LinkOptions.LaunchOnStartup)
+                {
+                    startupLinks.Add(config);
+                }
+
                 var toolStipMenuItem = new ToolStripMenuItem(config.Name)
                 {
                     Tag = config,
@@ -85,6 +96,7 @@ namespace Linkly.Services
                         {
                             // Set Leaf Nodes with a higher font size & bold text.
                             toolStipMenuItem.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                            isLeafDropDown = false; // Set this to false, since we starting a NEW leaf node.
                             break;
                         }
                     default:
@@ -129,6 +141,8 @@ namespace Linkly.Services
                     }
                 }
             }
+
+            return startupLinks;
         }
     }
 }

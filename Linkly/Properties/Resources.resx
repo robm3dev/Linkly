@@ -166,14 +166,8 @@
   <data name="Edit_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add_512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Settings_512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Add_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Block_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Block_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,6 +190,9 @@
   <data name="linkly_icon_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\linkly_icon_48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="donate-with-paypal-payment-button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\donate-with-paypal-payment-button2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="linkly_icon_v2_48x48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\linkly_icon_v2_48x48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -204,5 +201,8 @@
   </data>
   <data name="Exit_512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Exit_512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="duplicate_icon_512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\duplicate_icon_512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

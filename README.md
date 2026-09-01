@@ -35,6 +35,22 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
     </td>
     <td>8/31/2026</td>
   </tr>
+    <tr>
+    <td>v1.0.3</td>
+     <td>
+      <ul>
+        <li>New Feature: Added a LaunchOnStartup boolean property to a Link's configuration, so any Link can be configured to automatically launch when the Linkly application is started up. Please note: this only works for Links that do not use URL parameters, and for links that are using an installed browser type. See the ReadMe.md for further details.</li>
+        <li>The Menu Item Configuration dialog's default size has been resized to be slightly larger.</li>
+        <li>The Menu Item Configuration dialog can now be resized by the user. There is a small texture handle/image the user can click and drag in the bottom-right corner of the dialog to expand or contract the size of the dialog window. There is now a minimum size limit on the dialog, so it cannot be contracted into nothingness.</li>
+        <li>Added a "Maximize" button to the Menu Item Configuration dialog title bar, so the user can snap the dialog to full screen and back.</li>
+        <li>The color of Leaf Menu Item rows in the Menu Item Configuration dialog has been updated to a slightly lighter shade of green.</li>
+        <li>The "Delete," "Move Item(s) Up" (Up Arrow button), and "Move Item(s) Down" (Down Arrow button) options on the Menu Item Configuration dialog now support operations on multiple item selections in the ListView grid control, so the user can select multiple items to be moved up/down or removed at one time. Note: multi-selections in the grid can be performed using either the Control or Shift key combined with a left mouse click.</li>
+        <li>Added a new context menu to the ListView grid control in the Menu Item Configuration dialog, with new menu items to "Duplicate Item(s)," "Move Item(s) Up," and "Move Item(s) Down." Note: the context menu can be accessed by right-clicking on the Menu Item grid.</li>
+        <li>Added a label and button on the "About Linkly" dialog form which allows a user to click the button to link over and donate money via the author's PayPal account, if they enjoy using Linkly and would like to support the author of the tool.</li>
+      </ul>
+    </td>
+    <td>9/1/2026</td>
+  </tr>
 </table>
 
 ## Features
@@ -75,7 +91,7 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 
 ### Installation
 
-1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.2/LinklySetup.exe)
+1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.3/LinklySetup.exe)
 2. Run the installer and follow the setup wizard.
 3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
 4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.
@@ -120,8 +136,11 @@ Clicking **New** opens a small menu letting you choose which type of entry to ad
   | **Browser** | Which browser to open the link in — supported options: `None`, `Chrome`, `Edge`, `Firefox`, `Internet Explorer`, `Brave`, `Opera`, `Safari`. Linkly automatically detects which of these are installed on your system; if you try to open a link in a browser that isn't installed, you'll be prompted to install it. |
   | **Incognito Mode?** | Whether to open in private/incognito mode |
   | **New Browser Window?** | Whether to open in a new browser window |
+  | **Launch On Startup?** | Whether to launch the link automatically when the application starts |
   | **Url** | The target URL |
   | **Url Parameters** | Optional table of named parameters, each with a placeholder value, for building dynamic links (e.g. product ID lookups) |
+
+  **Please Note:** Links will only be launched automatically on application startup if they **do not** use dynamic URL Parameters, and only if their configured browser is currently installed on the system. These two rules prevent a launch from blocking the application's UI on startup — either by prompting for a parameter value, or by failing outright due to a missing browser.
 
 #### Example: Dynamic URL Parameters
 
@@ -147,9 +166,11 @@ A **Leaf** node behaves like a Header, except that instead of the following link
 
 Any Link entries placed directly beneath a Leaf node in `LinklyConfig.json` become children of that Leaf, and will appear as sub-menu items when you hover over or click the Leaf node.
 
-**What ends a Leaf's sub-menu:** a Leaf node's children continue until Linkly encounters either a **Separator** or a standard **Header** entry in the configuration. That entry — and everything after it — is treated as a terminator: it (and any items that follow) will be displayed as normal top-level menu items again, *not* as children of the Leaf. In other words, only consecutive Link entries directly following a Leaf become part of its sub-menu.
+**What ends a Leaf's sub-menu:** a Leaf node's children continue until Linkly encounters either a **Separator** or a standard **Header** or another **Leaf** entry in the configuration. Those entries — and everything after them — are treated as a terminator: it (and any items that follow) will be displayed as normal top-level menu items again or a new Leaf, *not* as children of the initial Leaf. In other words, only consecutive Link entries directly following a Leaf become part of its sub-menu.
 
 **Example configuration structure:**
+
+![Leaf Menu Item Node & Sub-Item Nodes](screenshots/menu-item-configuration-leaf-example.png)
 
 ```
 Leaf: AI Tools
@@ -157,8 +178,14 @@ Leaf: AI Tools
   Link: Chat GPT
   Link: Google Gemini
   Link: Claude AI
-Separator                  ← terminates the "AI Tools" Leaf
-Header: Shopping
+Separator                  ← Example 1: Separator terminates the "AI Tools" Leaf
+Leaf: AI Tools 1
+  Link: MS Co-Pilot
+  Link: Chat GPT
+Leaf: AI Tools 2           ← Example 2: Leaf terminates the "AI Tools 1" Leaf, and Starts a new "AI Tools 2" Leaf Node
+  Link: Google Gemini
+  Link: Claude AI             
+Header: Shopping           ← Example 3: Header terminates the "AI Tools 2" Leaf
   Link: Amazon
 ```
 

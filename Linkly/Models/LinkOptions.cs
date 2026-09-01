@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Linkly.Models
 {
@@ -18,8 +15,11 @@ namespace Linkly.Models
         public bool IsIncognito { get; set; }
 
         [JsonPropertyName("isNewWindow")]
-        public bool IsNewWindow { get; set; }  
-        
+        public bool IsNewWindow { get; set; }
+
+        [JsonPropertyName("launchOnStartup")]
+        public bool LaunchOnStartup { get; set; }
+
         [JsonPropertyName("paramReplacementsDic")]
         public Dictionary<string, string> ParamReplacementsDic { get; set; }
     }

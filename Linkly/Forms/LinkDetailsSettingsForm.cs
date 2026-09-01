@@ -63,6 +63,7 @@ namespace Linkly
                 this.BrowserComboBox.SelectedIndex = ((int)this.OutputMenuItem.LinkOptions.Browser - 1);
                 this.IncognitoCheckBox.Checked = this.OutputMenuItem.LinkOptions.IsIncognito;
                 this.NewBrowserWindowCheckBox.Checked = this.OutputMenuItem.LinkOptions.IsNewWindow;
+                this.LaunchOnStartupCheckBox.Checked = this.OutputMenuItem.LinkOptions.LaunchOnStartup;
                 this.UrlTextBox.Text = this.OutputMenuItem.LinkOptions.Url;
 
                 if (this.OutputMenuItem.LinkOptions.ParamReplacementsDic != null &&
@@ -167,6 +168,7 @@ namespace Linkly
                 this.OutputMenuItem.LinkOptions.Url = this.UrlTextBox.Text.Trim();
                 this.OutputMenuItem.LinkOptions.IsIncognito = this.IncognitoCheckBox.Checked;
                 this.OutputMenuItem.LinkOptions.IsNewWindow = this.NewBrowserWindowCheckBox.Checked;
+                this.OutputMenuItem.LinkOptions.LaunchOnStartup = this.LaunchOnStartupCheckBox.Checked;
 
                 if (this.ParamsListView.Items.Count > 0)
                 {
@@ -186,8 +188,9 @@ namespace Linkly
             }
             else
             {
-                var dialogTitle = "Required fields have not been populated!";
-                var message = "The required fields for a Link (Name, Url & Browser) have not be populated.  Please either complete the minimum configuration or click the cancel button, instead.";
+                var dialogTitle = "Required fields have not been populated or are in conflict with application constraints!";
+                var message = "The required fields for a Link (Name, Url & Browser) have not be populated correctly, or the settings are in conflict with application constraints.  " +
+                              "Please either complete the minimum configuration or click the cancel button, instead.";
                 MessageBox.Show(message, dialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -216,6 +219,17 @@ namespace Linkly
             if (string.IsNullOrWhiteSpace(this.NameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(this.UrlTextBox.Text))
             {
+                success = false;
+            }
+
+            if (this.LaunchOnStartupCheckBox.Checked &&
+                this.ParamsListView.Items.Count > 0)
+            {
+                var message = "The Launch on Startup option cannot be selected when there are URL Parameters defined, " +
+                              "because the application will be blocked from loading on start-up due to the user being prompted for input.  " + 
+                              "Please either remove the URL Parameters or uncheck the Launch on Startup option.";
+                var dialogTitle = "Launch on Startup is not compatible with URL Parameters.";
+                MessageBox.Show(message, dialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 success = false;
             }
 

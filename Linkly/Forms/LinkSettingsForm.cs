@@ -62,6 +62,7 @@ namespace Linkly
             this.LinksListView.Columns.Add("Browser");
             this.LinksListView.Columns.Add("NewWindow?");
             this.LinksListView.Columns.Add("InCognito?");
+            this.LinksListView.Columns.Add("LaunchOnStartup?");
             this.LinksListView.Columns.Add("Url");
             this.LinksListView.Columns.Add("Url Params");
 
@@ -81,8 +82,9 @@ namespace Linkly
             this.LinksListView.Columns[2].Width = 70;
             this.LinksListView.Columns[3].Width = 85;
             this.LinksListView.Columns[4].Width = 70;
-            this.LinksListView.Columns[5].Width = 275;
-            this.LinksListView.Columns[6].Width = 70;
+            this.LinksListView.Columns[5].Width = 110;
+            this.LinksListView.Columns[6].Width = 275;
+            this.LinksListView.Columns[7].Width = 70;
         }
 
         /// <summary>
@@ -195,8 +197,9 @@ namespace Linkly
                                         itemToEdit.SubItems[2].Text = config.LinkOptions.Browser.ToString();
                                         itemToEdit.SubItems[3].Text = config.LinkOptions.IsNewWindow.ToString();
                                         itemToEdit.SubItems[4].Text = config.LinkOptions.IsIncognito.ToString();
-                                        itemToEdit.SubItems[5].Text = config.LinkOptions.Url;
-                                        itemToEdit.SubItems[6].Text = hasUrlParams.ToString();
+                                        itemToEdit.SubItems[5].Text = config.LinkOptions.LaunchOnStartup.ToString();
+                                        itemToEdit.SubItems[6].Text = config.LinkOptions.Url;
+                                        itemToEdit.SubItems[7].Text = hasUrlParams.ToString();
                                         this.HasChanges = true;
                                     }
                                 }
@@ -215,10 +218,28 @@ namespace Linkly
         /// <param name="e">event args</param>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            var lastIndex = 0;
+
             if (this.LinksListView.SelectedItems != null &&
-                this.LinksListView.SelectedItems.Count == 1)
+                this.LinksListView.SelectedItems.Count > 0)
             {
-                this.LinksListView.SelectedItems[0].Remove();
+                foreach (ListViewItem item in this.LinksListView.SelectedItems)
+                {
+                    lastIndex = item.Index;
+                    item.Remove();
+                }
+
+                // Re-Select the item with the index one less than the final item that was deleted.
+                lastIndex--;
+                if (lastIndex <= this.LinksListView.Items.Count - 1)
+                {
+                    this.LinksListView.SelectedItems.Clear();
+                    this.LinksListView.Items[lastIndex].Selected = true;
+                    this.LinksListView.Items[lastIndex].Focused = true;
+                    this.LinksListView.Items[lastIndex].EnsureVisible();
+                    this.LinksListView.Select();
+                }
+
                 this.HasChanges = true;
             }
         }
@@ -231,22 +252,48 @@ namespace Linkly
         private void MoveUpButton_Click(object sender, EventArgs e)
         {
             if (this.LinksListView.SelectedItems != null &&
-                this.LinksListView.SelectedItems.Count == 1)
+                this.LinksListView.SelectedItems.Count > 0)
             {
-                var index = this.LinksListView.SelectedItems[0].Index;
+                // Cast to a typed list and sort by current index, ascending.
+                var selectedItems = this.LinksListView.SelectedItems
+                    .Cast<ListViewItem>()
+                    .OrderBy(item => item.Index)
+                    .ToList();
 
-                // Ensure the Selected Item is not the first item in the list.
-                if (index > 0)
+                // Bypass if the topmost selected item is already at the top -
+                // moving it up would result in a negative index.
+                if (selectedItems[0].Index == 0)
                 {
-                    var selectedItem = this.LinksListView.SelectedItems[0];
-
-                    // Remove the selected item
-                    this.LinksListView.SelectedItems[0].Remove();
-
-                    // Re-Insert the removed item at the 1 minus the previous index.
-                    this.LinksListView.Items.Insert(index - 1, selectedItem);
-                    this.HasChanges = true;
+                    this.LinksListView.Select();
+                    return;
                 }
+
+                this.LinksListView.BeginUpdate();
+
+                // Process items in ascending index order. Since ListViewItem.Index
+                // always reflects the item's *current* live position, moving the
+                // lowest-indexed item first (and working upward) keeps every
+                // subsequent item's Index accurate for its own move - no manual
+                // offset tracking needed, even with non-consecutive selections.
+                foreach (var item in selectedItems)
+                {
+                    var currentIndex = item.Index;
+                    item.Remove();
+                    this.LinksListView.Items.Insert(currentIndex - 1, item);
+                }
+
+                // Re-select the moved items so the selection follows them.
+                this.LinksListView.SelectedItems.Clear();
+                foreach (var item in selectedItems)
+                {
+                    item.Selected = true;
+                    item.Focused = true;
+                    item.EnsureVisible();
+                }
+
+                this.LinksListView.Select();
+                this.LinksListView.EndUpdate();
+                this.HasChanges = true;
             }
         }
 
@@ -258,23 +305,129 @@ namespace Linkly
         private void MoveDownButton_Click(object sender, EventArgs e)
         {
             if (this.LinksListView.SelectedItems != null &&
-                this.LinksListView.SelectedItems.Count == 1)
+                this.LinksListView.SelectedItems.Count > 0)
             {
-                var index = this.LinksListView.SelectedItems[0].Index;
+                // Cast to a typed list and sort by current index, descending.
+                var selectedItems = this.LinksListView.SelectedItems
+                    .Cast<ListViewItem>()
+                    .OrderByDescending(item => item.Index)
+                    .ToList();
 
-                // Ensure the selection is not the last item in the list.
-                if (index < this.LinksListView.Items.Count - 1)
+                // Bypass if the bottommost selected item is already at the end -
+                // moving it down would push it past the last valid index.
+                if (selectedItems[0].Index == this.LinksListView.Items.Count - 1)
                 {
-                    var selectedItem = this.LinksListView.SelectedItems[0];
-
-                    // Remove the selected item
-                    this.LinksListView.SelectedItems[0].Remove();
-
-                    // Re-Insert the removed item at the 1 plus the previous index.
-                    this.LinksListView.Items.Insert(index + 1, selectedItem);
-                    this.HasChanges = true;
+                    this.LinksListView.Select();
+                    return;
                 }
+
+                this.LinksListView.BeginUpdate();
+
+                // Process items in descending index order. Since ListViewItem.Index
+                // always reflects the item's *current* live position, moving the
+                // highest-indexed item first (and working downward) keeps every
+                // subsequent item's Index accurate for its own move - no manual
+                // offset tracking needed, even with non-consecutive selections.
+                foreach (var item in selectedItems)
+                {
+                    var currentIndex = item.Index;
+                    item.Remove();
+                    this.LinksListView.Items.Insert(currentIndex + 1, item);
+                }
+
+                // Re-select the moved items so the selection follows them.
+                this.LinksListView.SelectedItems.Clear();
+                foreach (var item in selectedItems)
+                {
+                    item.Selected = true;
+                    item.Focused = true;
+                    item.EnsureVisible();
+                }
+
+                this.LinksListView.Select();
+                this.LinksListView.EndUpdate();
+                this.HasChanges = true;
             }
+        }
+
+        #endregion
+
+        #region LinksListView Context Menu Item Click Events
+
+        /// <summary>
+        /// The Duplicate Item(s) Context Menu Click Event Method
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.LinksListView.SelectedItems != null &&
+                this.LinksListView.SelectedItems.Count > 0)
+            {
+                // Sort selected items by current index, ascending. Processing in
+                // this order lets us rely on each item's live Index property,
+                // since inserting a clone after an earlier item automatically
+                // shifts every item below it - no manual offset tracking needed.
+                var selectedItems = this.LinksListView.SelectedItems
+                    .Cast<ListViewItem>()
+                    .OrderBy(item => item.Index)
+                    .ToList();
+
+                this.LinksListView.BeginUpdate();
+
+                var duplicatedItems = new List<ListViewItem>();
+
+                foreach (var sourceItem in selectedItems)
+                {
+                    // Clone the ListViewItem (text, subitems, formatting, etc.)
+                    var newItem = (ListViewItem)sourceItem.Clone();
+
+                    // Deep-copy the underlying MenuItem stored in Tag, rather
+                    // than letting the clone share a reference to the original.
+                    if (sourceItem.Tag is MenuItem sourceMenuItem)
+                    {
+                        newItem.Tag = sourceMenuItem.Clone();
+                    }
+
+                    // Re-query the source item's current index right before
+                    // inserting - earlier insertions in this loop may have
+                    // already shifted it down from its original position.
+                    int insertIndex = sourceItem.Index + 1;
+                    this.LinksListView.Items.Insert(insertIndex, newItem);
+
+                    duplicatedItems.Add(newItem);
+                }
+
+                // Select the newly duplicated items so the user sees the result.
+                this.LinksListView.SelectedItems.Clear();
+                foreach (var newItem in duplicatedItems)
+                {
+                    newItem.Selected = true;
+                }
+
+                this.LinksListView.EndUpdate();
+                this.HasChanges = true;
+            }
+        }
+
+        /// <summary>
+        /// The Move Item(s) Up Context Menu Click Event Method
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void moveItemsUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.MoveUpButton_Click(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// The Move Item(s) Down Context Menu Click Event Method
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
+        private void moveItemsDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.MoveDownButton_Click(this, new EventArgs());
         }
 
         #endregion
@@ -403,6 +556,7 @@ namespace Linkly
                 item.SubItems.Add(config.LinkOptions?.Browser.ToString());
                 item.SubItems.Add(config.LinkOptions?.IsNewWindow.ToString());
                 item.SubItems.Add(config.LinkOptions?.IsIncognito.ToString());
+                item.SubItems.Add(config.LinkOptions?.LaunchOnStartup.ToString());
                 item.SubItems.Add(config.LinkOptions?.Url);
                 item.SubItems.Add(hasUrlParams.ToString());
                 item.Tag = config;
@@ -420,7 +574,7 @@ namespace Linkly
                         item.BackColor = Color.AliceBlue;
                         break;
                     case MenuItemType.Leaf:
-                        item.BackColor = Color.PaleGreen;
+                        item.BackColor = Color.FromArgb(200, 224, 200); // #C8E0C8 - Muted, Slightly deeper, Sage Green
                         break;
                 }
 
