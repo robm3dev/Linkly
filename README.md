@@ -192,7 +192,10 @@ Header: Shopping           ← Example 3: Header terminates the "AI Tools 2" Lea
 In the menu, this renders as:
 - **AI Tools** ▸ *(hover to see a sub-menu containing MS Co-Pilot, Chat GPT, Google Gemini, and Claude AI)*
 - a normal separator line
+- **AI Tools 1** ▸ *(hover to see a sub-menu containing MS Co-Pilot, Chat GPT)*
+- **AI Tools 2** ▸ *(hover to see a sub-menu containing Google Gemini, Claude AI)*
 - **Shopping** header, followed by the Amazon link as a regular top-level entry
+- a standard link to Amazon.com
 
 Leaf nodes are useful for keeping the top-level menu short while still organizing a larger number of related links — see the `AI Tools` entry in the sample `LinklyConfig.json` for a working example.
 
