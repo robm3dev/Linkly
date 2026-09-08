@@ -1,5 +1,4 @@
-﻿using Linkly.Models;
-using MenuItem = Linkly.Models.MenuItem;
+﻿using MenuItem = Linkly.Models.MenuItem;
 
 namespace Linkly.Services
 {

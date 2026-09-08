@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Linkly"
-#define MyAppVersion "1.0.3"
+#define MyAppVersion "1.0.4"
 #define MyAppPublisher "Bob Swirly Studios"
 #define MyAppURL "https://robmorrison.dev/"
 #define MyAppExeName "Linkly.exe"
