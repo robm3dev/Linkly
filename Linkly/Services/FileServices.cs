@@ -1,5 +1,4 @@
-﻿using Linkly.Models;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using MenuItem = Linkly.Models.MenuItem;
 

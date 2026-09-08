@@ -37,6 +37,7 @@
             aboutLinklyToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            preferencesToolStripMenuItem = new ToolStripMenuItem();
             MainContextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,9 +53,9 @@
             // 
             // MainContextMenuStrip
             // 
-            MainContextMenuStrip.Items.AddRange(new ToolStripItem[] { linklyMainToolStripSeparator, linkSettingsToolStripMenuItem, aboutLinklyToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+            MainContextMenuStrip.Items.AddRange(new ToolStripItem[] { linklyMainToolStripSeparator, linkSettingsToolStripMenuItem, preferencesToolStripMenuItem, aboutLinklyToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
             MainContextMenuStrip.Name = "MainContextMenuStrip";
-            MainContextMenuStrip.Size = new Size(210, 104);
+            MainContextMenuStrip.Size = new Size(210, 126);
             // 
             // linklyMainToolStripSeparator
             // 
@@ -90,6 +91,14 @@
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
+            // preferencesToolStripMenuItem
+            // 
+            preferencesToolStripMenuItem.Image = Properties.Resources.Settings_512x512;
+            preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            preferencesToolStripMenuItem.Size = new Size(209, 22);
+            preferencesToolStripMenuItem.Text = "Preferences";
+            preferencesToolStripMenuItem.Click += preferencesToolStripMenuItem_Click;
+            // 
             // LinklyMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -118,5 +127,6 @@
         private ToolStripMenuItem aboutLinklyToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem preferencesToolStripMenuItem;
     }
 }

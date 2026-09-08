@@ -1,6 +1,5 @@
 ﻿using Linkly;
 using Linkly.Dialogs;
-using Linkly.Models;
 using Microsoft.Win32;
 using System.Diagnostics;
 using MenuItem = Linkly.Models.MenuItem;

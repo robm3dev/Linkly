@@ -11,7 +11,7 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
     <td>v1.0.1</td>
     <td>Bug Fixes:
       <ul>
-        <li>Fixed bug with the browser selection drop drown box defaulting to 'None' in Link Details Dialog.</li>
+        <li>Fixed bug with the browser selection drop-down box defaulting to 'None' in Link Details Dialog.</li>
         <li>Set the Tab Order from top-to-bottom for all fields on both the Link & Link Details settings dialogs, as well as the Input Box dialog.</li>
         <li>Added field length limit on the Name field in the Link Details Dialog to 80 characters.</li>
         <li>Added field length limit on the Input Box Dialog text field to 70 characters.</li>
@@ -51,6 +51,18 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
     </td>
     <td>9/1/2026</td>
   </tr>
+  <tr>
+    <td>v1.0.4</td>
+    <td>
+      <ul>
+        <li>Added a startup validation check to prevent multiple Linkly processes from running simultaneously. If another Linkly instance is already running, the newly started instance will exit.</li>
+        <li>Added a <strong>Preferences</strong> context menu item that opens the new Preferences dialog.</li>
+        <li>Added a Preferences option to enable or disable launching Linkly automatically when Windows starts.</li>
+        <li>Added a button in Preferences to open Windows Taskbar Settings, along with guidance for configuring whether the Linkly icon is displayed directly in the system tray or hidden in the system tray overflow area.</li>
+      </ul>
+    </td>
+    <td>9/8/2026</td>
+  </tr>
 </table>
 
 ## Features
@@ -63,6 +75,9 @@ Linkly is a lightweight Windows system tray utility that puts a fully customizab
 - **Dynamic URL parameters** — Define named parameters with placeholder values to build dynamic lookup links (e.g. product ID lookups) from a single configuration entry.
 - **Organized sections** — Group related links under headers with separators for a clean, organized menu.
 - **Sub-menus with Leaf nodes** — Nest related links beneath a Leaf node to display them as a collapsible sub-menu instead of a flat list.
+- **Single-instance protection** — Linkly prevents multiple instances of the application from running simultaneously.
+- **Preferences** — Configure application startup behavior and access Windows Taskbar Settings for system tray visibility.
+- **Launch with Windows** — Optionally configure Linkly to launch automatically when Windows starts.
 
 ## Menu Overview
 
@@ -79,7 +94,7 @@ The menu is built from four types of entries:
 - **Link** — a clickable entry (shown with its site's icon) that opens the configured URL in your chosen browser.
 - **Leaf** — a special parent node whose child links are displayed as a sub-menu (flyout/drop-down) beneath it, instead of being listed directly in the main menu. In the screenshot above, **AI Tools** is a Leaf node — hovering over it opens a flyout containing MS Co-Pilot, Chat GPT, Google Gemini, and Claude AI. See [Leaf Nodes](#leaf-nodes) below for details.
 
-At the bottom of the menu you'll also find **Menu Item Configuration** (to edit your links), **About Linkly**, and **Exit**.
+At the bottom of the menu you'll also find **Menu Item Configuration** (to edit your links), **Preferences**, **About Linkly**, and **Exit**.
 
 ## Getting Started
 
@@ -94,8 +109,8 @@ At the bottom of the menu you'll also find **Menu Item Configuration** (to edit 
 1. Download the Linkly Installation Setup package: [Download Linkly Setup](https://github.com/robm3dev/Linkly/releases/download/v1.0.3/LinklySetup.exe)
 2. Run the installer and follow the setup wizard.
 3. Once installed and executed, Linkly will appear in your system tray — right-click the icon to access your configured links.
-4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Pograms menu.
-5. Please Note: If you want Linkly to be executed automatically on start-up and/or always be displayed in your system tray, these changes will be left up to the user to configure in the Windows System Tray settings, of their own volition.  Linkly will not change any Windows settings, on your behalf.
+4. You can uninstall Linkly directly through the standard Windows Settings --> Add/Remove Programs menu.
+5. **Startup and system tray behavior:** Linkly's **Preferences** dialog lets you enable or disable launching Linkly automatically when Windows starts. Preferences also includes a button to open Windows Taskbar Settings, where you can configure whether the Linkly icon is displayed directly in the system tray or hidden in the system tray overflow area. Linkly does not change Windows Taskbar settings on your behalf.
 
 ## Configuring Your Links
 
@@ -223,9 +238,24 @@ You should never need to rebuild your configuration from scratch more than once.
 
 `LinklyConfig.json` is a plain, human-readable JSON file, so you're not limited to the configuration UI. If you'd rather bulk-create or edit links by hand — for example, generating a large batch of entries with an AI tool — you can edit `LinklyConfig.json` directly and bypass the configuration UI entirely. Linkly will pick up your changes the next time it loads the configuration.
 
-## Settings (TBD)
+## Preferences
 
-*TBD - Add a settings menu may be in the works for future versions of Linkly *
+Right-click the Linkly system tray icon and select **Preferences** to open the Preferences dialog.
+
+![Linkly Preferences](screenshots/preferences-menu-item.png)
+
+![Linkly Preferences](screenshots/preferences-menu-dialog.png)
+
+From the Preferences dialog you can:
+
+- **Launch Linkly when Windows starts** — Toggle this option on or off to control whether Linkly automatically starts when you sign in to Windows.
+- **Open Windows Taskbar Settings** — Click the button to open the Windows Taskbar Settings screen. From there, you can configure whether the Linkly icon is displayed directly in the system tray or hidden in the system tray overflow area.
+
+### System Tray Icon Visibility
+
+Windows controls which notification/system tray icons are displayed directly on the taskbar. Linkly provides a convenient button to open the appropriate Windows Taskbar Settings screen, but does not modify these Windows settings automatically.
+
+Depending on your version of Windows, look for the system tray icon, taskbar corner overflow, or notification area settings and enable or disable Linkly according to your preference.
 
 ## Icons
 

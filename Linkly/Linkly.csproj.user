@@ -13,6 +13,9 @@
     <Compile Update="Forms\LinkDetailsSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\PreferencesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LinklyMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
